@@ -7,7 +7,7 @@ public class Platform : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D collision) {
 
         // Get the instance of the object colliding with me
-        Player player = collision.gameObject.GetComponent<Player>();
+        //Player player = collision.gameObject.GetComponent<Player>();
 
         
     }
