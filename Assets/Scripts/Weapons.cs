@@ -9,12 +9,15 @@ public class Weapons : MonoBehaviour {
 
     public float shotCooldown;
 
-    public Vector2 shotDirection = new Vector2(0, 1);
-
     public bool canFire = false;
 
-	// Use this for initialization
-	void Start () {
+    private Vector2 shotDirection = new Vector2(1, 0);
+
+    private bool right;
+    //private int last;
+
+    // Use this for initialization
+    void Start () {
         shotCooldown = 0f;
 	}
 	
@@ -36,18 +39,33 @@ public class Weapons : MonoBehaviour {
             shotTransform.position = transform.position;
             ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 
+            right = gameObject.GetComponent<Player>().right;
+
             if(shot != null)
             {
                 shot.isEnemyShot = isEnemy;
             }
 
-            //Movement move = shotTransform.gameObject.GetComponent<Movement>();
+            Movement move = shotTransform.gameObject.GetComponent<Movement>();
 
-            //if(move != null)
-            //{
-
-            //    move.direction = shotDirection;
-            //}
+            if (move != null)
+            {
+                move.direction = shotDirection;
+                if (right)
+                {
+                    move.direction.x = 1;
+                    //last = 1;
+                }
+                else if(!right)
+                {
+                    move.direction.x = -1;
+                    //last = -1;
+                }
+                /*else
+                {
+                    move.direction.x = last;
+                }*/
+            }
         }
     }
 

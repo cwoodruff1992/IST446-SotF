@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     public int range = 5;
     public int fire_rate = 5;
     public float jump_height = 100f;
+    public bool right = true;
 
     // Check if the player is on the ground
     public LayerMask whatIsGround;
@@ -36,6 +37,18 @@ public class Player : MonoBehaviour {
         // If we press the default Jump buttons, and are grounded, apply our jump force
         if (Input.GetButtonDown("Jump") && grounded)
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jump_height));
+
+        bool shoot = Input.GetButtonDown("Fire1");
+        shoot |= Input.GetButtonDown("Fire2");
+
+        if (shoot)
+        {
+            Weapons weapon = GetComponent<Weapons>();
+            if (weapon != null)
+            {
+                weapon.Attack(false);
+            }
+        }
     }
 
     // Update on a designated clock tick
@@ -49,5 +62,14 @@ public class Player : MonoBehaviour {
 
         // Move based on input and character speed
         GetComponent<Rigidbody2D>().velocity = new Vector2(inputX * max_speed, GetComponent<Rigidbody2D>().velocity.y);
+
+        if (inputX > 0)
+        {
+            right = false;
+        }
+        else if (inputX < 0)
+        {
+            right = true;
+        }
     }
 }
