@@ -5,7 +5,6 @@ using System.Linq;
 public class ScreenScroll : MonoBehaviour {
 
     public float speed;
-    public float tileSizeX;
 
     private Vector3 startPosition;
 
@@ -16,8 +15,6 @@ public class ScreenScroll : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-        float newPosition = Mathf.Repeat(Time.time * speed, tileSizeX);
-        transform.position = startPosition + new Vector3(-1,0,0) * newPosition;
+        transform.position = startPosition + new Vector3(1, 0, 0) * (Time.time * speed);
     }
 }

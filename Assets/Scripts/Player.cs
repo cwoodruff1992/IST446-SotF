@@ -73,10 +73,4 @@ public class Player : MonoBehaviour {
             right = true;
         }
     }
-
-    void LateUpdate()
-    {
-        cam = GameObject.Find("Main Camera");
-        cam.transform.position = cam.transform.position + new Vector3(GetComponent<Rigidbody2D>().position.x, Mathf.Clamp(transform.position.z, zmin, zmax), 0);
-    }
 }
