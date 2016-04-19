@@ -4,13 +4,9 @@ using System.Collections;
 public class Weapons : MonoBehaviour {
 
     public Transform shotPrefab;
-
     public float shootingRate = 0.25f;
-
     public float shotCooldown;
-
     public bool canFire = false;
-
     private Vector2 shotDirection = new Vector2(1, 0);
 
     private bool right;
@@ -37,6 +33,9 @@ public class Weapons : MonoBehaviour {
 
             var shotTransform = Instantiate(shotPrefab) as Transform;
             shotTransform.position = transform.position;
+
+
+
             ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
 
             right = gameObject.GetComponent<Player>().right;
@@ -54,17 +53,13 @@ public class Weapons : MonoBehaviour {
                 if (right)
                 {
                     move.direction.x = 1;
-                    //last = 1;
+                    shotTransform.position = new Vector3(shotTransform.position.x - 1.2f, shotTransform.position.y, shotTransform.position.z);
                 }
                 else if(!right)
                 {
                     move.direction.x = -1;
-                    //last = -1;
+                    shotTransform.position = new Vector3(shotTransform.position.x + 1.2f, shotTransform.position.y, shotTransform.position.z);
                 }
-                /*else
-                {
-                    move.direction.x = last;
-                }*/
             }
         }
     }

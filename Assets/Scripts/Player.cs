@@ -61,6 +61,23 @@ public class Player : MonoBehaviour {
         // Get left-right movement input from controls
         float inputX = Input.GetAxis("Horizontal");
 
+        // Get the player's current position
+        Vector2 position = GetComponent<Rigidbody2D>().position;
+
+        // Gets the player's current health
+        Health playerHealth = this.GetComponent<Health>();
+
+        // Check if falling off the screen down
+        if (position.y <= -4.3)
+        {
+            playerHealth.hp = -1;
+        }
+        // Check if falling off the screen backwards
+        if (position.x <= -10.25)
+        {
+            playerHealth.hp = -1;
+        }
+
         // Move based on input and character speed
         GetComponent<Rigidbody2D>().velocity = new Vector2(inputX * max_speed, GetComponent<Rigidbody2D>().velocity.y);
 
