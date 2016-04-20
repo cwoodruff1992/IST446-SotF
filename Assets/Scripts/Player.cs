@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
     // Adjustable through menu
     // 5 = default values or middle everything
     // Use scale from 1 - 10 for each
-    public float speed = 100f;
     public float max_speed = 5f;
     public int health = 5;
     public int damage = 5;
@@ -61,6 +60,14 @@ public class Player : MonoBehaviour {
         // Get left-right movement input from controls
         float inputX = Input.GetAxis("Horizontal");
 
+        // Move based on input and character speed
+        GetComponent<Rigidbody2D>().velocity = new Vector2(inputX * max_speed, GetComponent<Rigidbody2D>().velocity.y);
+
+        if (!grounded)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y);
+        }
+
         // Get the player's current position
         Vector2 position = GetComponent<Rigidbody2D>().position;
 
@@ -70,17 +77,15 @@ public class Player : MonoBehaviour {
         // Check if falling off the screen down
         if (position.y <= -4.3)
         {
-            playerHealth.hp = -1;
+            playerHealth.hp = 0;
         }
         // Check if falling off the screen backwards
         if (position.x <= -10.25)
         {
-            playerHealth.hp = -1;
+            playerHealth.hp = 0;
         }
 
-        // Move based on input and character speed
-        GetComponent<Rigidbody2D>().velocity = new Vector2(inputX * max_speed, GetComponent<Rigidbody2D>().velocity.y);
-
+        // Flip position of firing with direction
         if (inputX > 0)
         {
             right = false;
