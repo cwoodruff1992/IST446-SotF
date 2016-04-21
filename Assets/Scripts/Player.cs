@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     public int fire_rate = 5;
     public float jump_height = 100f;
     public bool right = true;
+    public int number = 1;
 
     // Check if the player is on the ground
     public LayerMask whatIsGround;

@@ -5,11 +5,15 @@ public class Health : MonoBehaviour {
 
     public int hp = 100;
     public bool isEnemy = true;
+    private GameMaster GM;
+    private int playerNum;
     //private PointDisplay points;
     //private PointDisplay health;
 
     void Start()
     {
+        GM = GameObject.Find("_GameMaster").GetComponent<GameMaster>();
+        playerNum = gameObject.GetComponent<Player>().number;
         //points = GameObject.Find("_GameMaster").GetComponent<PointDisplay>();
         //health = GameObject.Find("_GameMaster").GetComponent<PointDisplay>();
     }
@@ -22,11 +26,11 @@ public class Health : MonoBehaviour {
             if(shot.isEnemyShot != isEnemy)
             {
                 hp -= shot.damage;
-                //health.UpdateHealth();
                 Destroy(shot.gameObject);
 
                 if (hp <= 0)
                 {
+                    GM.Died(playerNum);
                     Destroy(gameObject);
                 }
             }
@@ -37,6 +41,7 @@ public class Health : MonoBehaviour {
     {
         if (hp <= 0)
         {
+            GM.Died(playerNum);
             Destroy(gameObject);
         }
     }
