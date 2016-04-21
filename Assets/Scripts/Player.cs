@@ -23,7 +23,6 @@ public class Player : MonoBehaviour {
     public float groundRadius = 0.2f;
     private Transform groundCheck;
     private bool grounded = false;
-    private GameObject cam;
 
     // Update while we're awake
     void Awake()
@@ -76,12 +75,12 @@ public class Player : MonoBehaviour {
         Health playerHealth = this.GetComponent<Health>();
 
         // Check if falling off the screen down
-        if (position.y <= -4.3)
+        if (position.y <= Camera.main.gameObject.transform.position.y -5.58f)
         {
             playerHealth.hp = 0;
         }
         // Check if falling off the screen backwards
-        if (position.x <= -10.25)
+        if (position.x <= Camera.main.gameObject.transform.position.x - 11.53f)
         {
             playerHealth.hp = 0;
         }
