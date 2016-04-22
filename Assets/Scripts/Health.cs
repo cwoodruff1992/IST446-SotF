@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
+    // 
     public int hp = 100;
     public bool isEnemy = true;
     private GameMaster GM;
