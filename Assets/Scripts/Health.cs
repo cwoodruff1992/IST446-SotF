@@ -4,7 +4,7 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
     // 
-    public int hp = 100;
+    public int hp = 5;
     public bool isEnemy = true;
     private GameMaster GM;
     private int playerNum;
