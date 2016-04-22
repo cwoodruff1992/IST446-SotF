@@ -5,6 +5,7 @@ using System.Linq;
 public class ScreenScroll : MonoBehaviour {
 
     public float speed;
+    public float endOfLine;
 
     private Vector3 startPosition;
 
@@ -15,6 +16,7 @@ public class ScreenScroll : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        transform.position = startPosition + new Vector3(1, 0, 0) * (Time.time * speed);
+        if (Camera.main.gameObject.transform.position.x < (endOfLine - 10.6f))
+            transform.position = startPosition + new Vector3(1, 0, 0) * (Time.time * speed);
     }
 }

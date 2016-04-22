@@ -7,10 +7,13 @@ public class Respawn : MonoBehaviour {
 
     public Player player1;
 
+    void Start()
+    {
+        GM = GameObject.Find("_GameMaster").GetComponent<GameMaster>();
+    }
+
 	// Update is called once per frame
 	void FixedUpdate () {
-        GM = GameObject.Find("_GameMaster").GetComponent<GameMaster>();
-
         if (Mathf.Floor(Camera.main.gameObject.transform.position.x +5f) == Mathf.Floor(gameObject.transform.position.x))
         {
             if (GM.GetP1Alive() == false)
