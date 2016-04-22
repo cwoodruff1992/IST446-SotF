@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameMaster : MonoBehaviour {
 
+    private int winner;
+
     private bool p1alive = true;
     //private bool p2alive = true;
     //private bool p3alive = true;
@@ -22,5 +24,9 @@ public class GameMaster : MonoBehaviour {
 
     public bool GetP1Alive() {
         return p1alive;
+    }
+
+    public void SetWinner(int winnerNum) {
+        winner = winnerNum;
     }
 }
