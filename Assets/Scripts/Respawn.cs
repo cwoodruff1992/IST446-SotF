@@ -12,6 +12,9 @@ public class Respawn : MonoBehaviour {
     public Player player3 = null;
     public Player player4 = null;
 
+    // Incrementor
+    int i = 1;
+
     // Dictionary to relate numbers to player states
     Dictionary<int, Player> players = new Dictionary<int, Player>();
 
@@ -23,16 +26,16 @@ public class Respawn : MonoBehaviour {
         // Store the player connection in the dictionary
         players.Add(1, player1);
         players.Add(2, player2);
-        players.Add(3, null);
-        players.Add(4, null);
+        players.Add(3, player3);
+        players.Add(4, player4);
     }
 
 	// Update is called once per frame
 	void FixedUpdate () {
         // If the camera has passed the respawner
-        if (Mathf.Floor(Camera.main.gameObject.transform.position.x +5f) == Mathf.Floor(gameObject.transform.position.x)) {
+        if (Mathf.Floor(Camera.main.gameObject.transform.position.x) == Mathf.Floor(gameObject.transform.position.x)) {
             // For each player,
-            for(int i = 1; i <=4; i++) {
+            while (i < 5) {
                 // If they're not alive,
                 if (GM.GetStatus(i) == false) {
                     // Resurect the player to the screen
@@ -40,6 +43,9 @@ public class Respawn : MonoBehaviour {
                     // Inform the GM of the player's resurection
                     GM.Reborn(i);
                 }
+
+                // Increment
+                i++;
             }
         }
 	}
