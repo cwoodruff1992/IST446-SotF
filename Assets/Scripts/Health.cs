@@ -6,17 +6,14 @@ public class Health : MonoBehaviour {
     // 
     public int hp = 5;
     public bool isEnemy = true;
+    public int deathPoints = 100;
     private GameMaster GM;
     private int playerNum;
-    //private PointDisplay points;
-    //private PointDisplay health;
 
     void Start()
     {
         GM = GameObject.Find("_GameMaster").GetComponent<GameMaster>();
         playerNum = gameObject.GetComponent<Player>().number;
-        //points = GameObject.Find("_GameMaster").GetComponent<PointDisplay>();
-        //health = GameObject.Find("_GameMaster").GetComponent<PointDisplay>();
     }
 
 	void OnTriggerEnter2D (Collider2D collider) {
@@ -32,6 +29,7 @@ public class Health : MonoBehaviour {
                 if (hp <= 0)
                 {
                     GM.Died(playerNum);
+                    GM.AllotScore(shot.GetComponentInParent<Player>().number, deathPoints);
                     Destroy(gameObject);
                 }
             }

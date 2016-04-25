@@ -9,9 +9,9 @@ public class Title : MonoBehaviour {
         const int buttonWidth = 120;
         const int buttonHeight = 60;
 
-        Rect startRect = new Rect(Screen.width / 3 - (buttonWidth / 2), (9 * Screen.height / 10) - (buttonHeight / 2), buttonWidth, buttonHeight);
-        Rect controlsRect = new Rect(Screen.width / 3 - (buttonWidth / 2) + (buttonWidth * 2), ((9 * Screen.height / 10) - (buttonHeight / 2)), buttonWidth, buttonHeight);
-        Rect creditsRect = new Rect(Screen.width / 3 - (buttonWidth / 2) + (buttonWidth * 4), ((9 * Screen.height / 10) - (buttonHeight / 2)), buttonWidth, buttonHeight);
+        Rect startRect = new Rect(Screen.width / 2 - (buttonWidth / 2) - (buttonWidth * 2), (9 * Screen.height / 10) - (buttonHeight / 2), buttonWidth, buttonHeight);
+        Rect controlsRect = new Rect(Screen.width / 2 - (buttonWidth / 2), ((9 * Screen.height / 10) - (buttonHeight / 2)), buttonWidth, buttonHeight);
+        Rect creditsRect = new Rect(Screen.width / 2 - (buttonWidth / 2) + (buttonWidth * 2), ((9 * Screen.height / 10) - (buttonHeight / 2)), buttonWidth, buttonHeight);
 
         if (GUI.Button(startRect, "Play")) {
             SceneManager.LoadScene("Level 1");
