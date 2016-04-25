@@ -32,7 +32,6 @@ public class Health : MonoBehaviour {
                 if (hp <= 0)
                 {
                     GM.Died(playerNum);
-                    Destroy(gameObject);
                 }
             }
         }
@@ -43,7 +42,6 @@ public class Health : MonoBehaviour {
         if (hp <= 0)
         {
             GM.Died(playerNum);
-            Destroy(gameObject);
         }
     }
 }

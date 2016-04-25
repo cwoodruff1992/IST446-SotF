@@ -38,7 +38,10 @@ public class Player : MonoBehaviour {
     void Update () {
         // If we press the default Jump buttons, and are grounded, apply our jump force
         if (Input.GetButtonDown(myJump) && grounded)
+        {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jump_height));
+
+        }
 
         // If we press the fire button, prepare to fire
         bool shoot = Input.GetButtonDown(myShoot);

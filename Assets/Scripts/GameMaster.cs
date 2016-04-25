@@ -7,10 +7,10 @@ public class GameMaster : MonoBehaviour {
     private int winner;
 
     // Variables to determine if certain players should be revived
-    private bool p1alive = true;
-    private bool p2alive = true;
-    private bool p3alive = true;
-    private bool p4alive = true;
+    private static bool p1alive = true;
+    private static bool p2alive = true;
+    private static bool p3alive = true;
+    private static bool p4alive = true;
 
     // Mark players as dead
     public void Died(int playerNum) {
