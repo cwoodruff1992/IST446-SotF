@@ -4,7 +4,10 @@ using System.Collections;
 public class GameMaster : MonoBehaviour {
 
     // Variable to store the number of the winner
-    private int winner;
+    private static int winner;
+
+    // Variable to determine whether gameplay began
+    private static bool playing = false;
 
     // Variables to determine if certain players should be revived
     private static bool p1alive = true;
@@ -59,8 +62,36 @@ public class GameMaster : MonoBehaviour {
         return false;
     }
 
-    // Set who one the round
+    // Set who won the round
     public void SetWinner(int winnerNum) {
         winner = winnerNum;
+        playing = false;
+    }
+
+    // Get who Won the round
+    public string GetWinner()
+    {
+        switch (winner)
+        {
+            case 1:
+                return "Chicken";
+                break;
+            case 2:
+                return "Pig";
+                break;
+            case 3:
+                return "Deer";
+                break;
+            case 4:
+                return "Panda";
+                break;
+            default:
+                return "Draw! There was no winner!";
+                break;
+        }
+    }
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
     }
 }

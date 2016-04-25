@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EndOfLevel : MonoBehaviour {
 
@@ -27,6 +28,9 @@ public class EndOfLevel : MonoBehaviour {
             winner = hit.collider.GetComponent<Player>();
             // Tell the game master who the winner is
             GM.SetWinner(winner.number);
+
+            SceneManager.LoadScene("Winner");
         }
+
     }
 }
