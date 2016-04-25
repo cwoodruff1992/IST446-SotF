@@ -53,13 +53,18 @@ public class Player : MonoBehaviour {
             // If the player does not have a weapon
             if (weapon != null) {
                 // Player cannot attack
-                weapon.Attack(false);
+                weapon.Attack(true);
             }
         }
     }
 
     // Update on a designated clock tick
     void FixedUpdate () {
+
+        if(this.health <= 0)
+        {
+            GetComponent<Rigidbody2D>().MovePosition(new Vector2(0,-100));
+        }
 
         // Check if we're on the ground
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);

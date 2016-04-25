@@ -13,7 +13,7 @@ public class ScreenScroll : MonoBehaviour {
     private Vector3 startPosition;
     private GameMaster GM; 
     // The time at which the map began scrolling.
-    private static float timeOffset = -1;
+    private static float timeOffset = 0;
     // Time at which the end of the map was hit
     private static float gameover = -1;
     // Time to wait after hitting the end of a level before triggering a Draw
@@ -36,7 +36,7 @@ public class ScreenScroll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // If the camera is before the stopping point
-        if (timeOffset != -1 && Camera.main.gameObject.transform.position.x < (endOfLine - 10.6f))
+        if (timeOffset != -1 && Camera.main.gameObject.transform.position.x < endOfLine)
         {
             // Sets the gameover timer to "off"
             gameover = -1;

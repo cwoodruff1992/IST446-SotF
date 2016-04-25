@@ -7,7 +7,7 @@ public class ShotScript : MonoBehaviour {
     public int damage = 1;
     // Variable to determine if the shot should be identified as
     // and enemy's
-    public bool isEnemyShot = false;
+    public bool isEnemyShot = true;
     // Lifetime of shot before destruction
     public int lifetime = 25;
 
