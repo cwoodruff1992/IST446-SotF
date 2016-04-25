@@ -21,7 +21,9 @@ public class ScreenScroll : MonoBehaviour {
 	void Update () {
         // If the camera is before the stopping point
         if (Camera.main.gameObject.transform.position.x < (endOfLine - 10.6f))
+        {
             // then scroll the camera according to the given speed
             transform.position = startPosition + new Vector3(1, 0, 0) * (Time.time * speed);
+        }
     }
 }
